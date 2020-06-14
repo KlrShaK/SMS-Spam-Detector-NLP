@@ -1,5 +1,4 @@
 """Info about Dataset: http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/"""
-"""Dataset expanded: https://www.kaggle.com/team-ai/spam-text-message-classification"""
 """Dataset original: https://www.kaggle.com/uciml/sms-spam-collection-dataset"""
 
 import tensorflow as tf
@@ -56,7 +55,6 @@ test_padded = pad_sequences(test_sequences, maxlen=max_length, padding='post', t
 model = tf.keras.Sequential(
     [
         tf.keras.layers.Embedding(vocab_size, embedding_dims, input_length=max_length),
-        #tf.keras.layers.GlobalAveragePooling1D(),
         tf.keras.layers.Conv1D(32, 3, activation='relu'),
         tf.keras.layers.Bidirectional(LSTM(32)),
         tf.keras.layers.Dropout(0.5),
